@@ -1,5 +1,6 @@
 import 'package:cinemapedia/presentation/providers/movies/movies_providers.dart';
 import 'package:cinemapedia/presentation/providers/movies/movies_slideshow_provider.dart';
+import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -37,6 +38,10 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final initialLoading = ref.watch(initialLoadingProvider);
+
+    if (initialLoading) return const FullScreenLoader();
+
     final slideShowMovies = ref.watch(moviesSlideshowProvider);
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final popularMovies = ref.watch(popularMoviesProvider);
@@ -69,7 +74,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                 loadNextPage: () =>
                     ref.read(upcomingMoviesProvides.notifier).loadNextPage()),
             MovieHorizontalListview(
-                movies: nowPlayingMovies,
+                movies: popularMovies,
                 title: "Populares",
                 loadNextPage: () =>
                     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage()),
