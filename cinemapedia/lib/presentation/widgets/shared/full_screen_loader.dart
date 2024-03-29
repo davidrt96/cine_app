@@ -32,6 +32,7 @@ class FullScreenLoader extends StatelessWidget {
           const CircularProgressIndicator(
             strokeWidth: 2,
           ),
+          // ignore: prefer_const_constructors
           SizedBox(
             height: 10,
           ),
