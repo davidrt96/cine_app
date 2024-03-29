@@ -32,7 +32,7 @@ class FullScreenLoader extends StatelessWidget {
           const CircularProgressIndicator(
             strokeWidth: 2,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           StreamBuilder(
